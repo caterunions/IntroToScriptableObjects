@@ -35,3 +35,6 @@ public class Item : ScriptableObject
     public int MaxStackSize = 1;
 }
 ```
+
+5. Return to the project tab, and right click to create a new item using our newly made ScriptableObject:
+![img.png](image.png)
