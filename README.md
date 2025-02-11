@@ -70,3 +70,74 @@ public class InventoryItem
 ```
 
 10. Create a constructor for InventoryItem that takes in an Item, and sets the stack count to one.
+
+```csharp
+public class InventoryItem
+{
+    public InventoryItem(Item item)
+    {
+        Item = item;
+        StackCount = 1;
+    }
+    public Item Item { get; private set; }
+
+    public int StackCount { get; private set; }
+}
+```
+
+11.  Add two methods to InventoryItem, AddToStack and RemoveFromStack. They will both return ints.
+    
+```csharp
+public class InventoryItem
+{
+    public InventoryItem(Item item)
+    {
+        Item = item;
+        StackCount = 1;
+    }
+    public Item Item { get; private set; }
+
+    public int StackCount { get; private set; }
+
+    public int AddToStack(int add)
+    {
+
+    }
+    public int RemoveFromStack(int remove)
+    {
+
+    }
+}
+```
+
+12.  AddToStack needs to check if the stack can contain all the incoming items, and return any excess:
+
+```csharp
+public int AddToStack(int add)
+{
+    int overflow = (StackCount + add) - Item.MaxStackSize;
+
+    if(overflow > 0)
+    {
+        StackCount = Item.MaxStackSize;
+        return overflow;
+    }
+    else
+    {
+        StackCount += add;
+        return 0;
+    }
+}
+```
+
+13.  RemoveFromStack will deplete the stack count, ensure it stays positive, and return the current stack count.
+
+```csharp
+public int RemoveFromStack(int remove)
+{
+    StackCount -= remove;
+    StackCount = Mathf.Max(0, StackCount);
+
+    return StackCount;
+}
+```
