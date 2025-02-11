@@ -37,4 +37,36 @@ public class Item : ScriptableObject
 ```
 
 5. Return to the project tab, and right click to create a new item using our newly made ScriptableObject:
+   
 ![img.png](image.png)
+
+6. Name it “Coin”, drag an image into the “Sprite” field and set the max stack size at 10.
+
+![img.png](image1.png)
+
+7. Create a new script named “Inventory”.
+   
+8. Create a new C# class inside the Inventory script called InventoryItem:
+
+```csharp
+public class Inventory : MonoBehaviour
+{
+}
+
+public class InventoryItem
+{
+}
+```
+
+9. Add two variables to InventoryItem, the Item that it represents and an int for its stack count.
+
+```csharp
+public class InventoryItem
+{
+    public Item Item { get; private set; }
+
+    public int StackCount { get; private set; }
+}
+```
+
+10. Create a constructor for InventoryItem that takes in an Item, and sets the stack count to one.
